@@ -24,9 +24,9 @@ if ('serviceWorker' in navigator) {
 
 // Initialize the firebase firestore database
 firebase.initializeApp({
-  apiKey: "AIzaSyBig_htEJTY6jZ1LpuT6DvXnrqrXaa2heY",
-  authDomain: "cse134b-527c4.firebaseapp.com",
-  projectId: "cse134b-527c4",
+  apiKey: "AIzaSyCQrIlNOHjzZ6nX51-Yr6co68CM4jziFh0",
+  authDomain: "cse134bec.firebaseapp.com",
+  projectId: "cse134bec"
 });
 var db  =firebase.firestore();
 var name, email, photoUrl, uid, emailVerified, team;
