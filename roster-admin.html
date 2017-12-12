@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roster</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="bootstrap.css" />
+  <script src="jquery-3.2.1.slim.min.js"></script>
+  <!--
+  Filename: roster-admin.html
+
+  Description: The following file displays the team roster. The user is allowed to add, edit, and delete a player.
+
+  Offline: When the page has been seen by the user, they will be able to see the displayed data if they were to leave the page and come back. The user is not allowed to add, edit, or delete any data when offline.
+-->
+</head>
+<body>
+  <!-- Remove this comment when done -->
+  <div class="container container-index" id="cont">
+    <nav class="navbar">
+      <a class="addbtn moreButton" type="button" href="#" data-toggle="modal" data-target="#logModal"><img src="more.svg"/></a>
+
+      <div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Log Off</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-footer">
+              <a class="addbtn" href="#" onclick="logOff()">Log Off</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a  id="nav_a" class="nav-link" href="statistics-admin.html"><img src="bar-chart.svg" /></a>
+        </li>
+        <li class="nav-item">
+          <a id="nav_b" class="nav-link" href="schedule-admin.html"><img src="calendar.svg" /></a>
+        </li>
+        <li class="nav-item">
+          <a id="nav_c" class="nav-link active" href="roster-admin.html"><img src="listing-option.svg" /></a>
+        </li>
+      </ul>
+    </nav>
+    <h3>Roster</h3>
+    <div class="row">
+      <div class="col-sm-4 rosteradd">
+        <input type="button" value="Add Player" class="btn btn-primary login" onclick="addToRoster()">
+      </div>
+    </div>
+    <div id="playerrow0" class="playertemplate">
+      <div class="row">
+        <div class="col-sm-4 text-center">
+          <img src="man.png" class="rounded-circle">
+        </div>
+        <div class="col-sm-8">
+          <h5 class="playernameheader"><a class="playername" href="#" onclick="displayProfile(this)"></a></h5>
+          <div>
+            <h6 class="playerposition"></h6>
+            <h6 class="playerheight"></h6>
+            <h6 class="playerweight"></h6>
+          </div>
+          <div>
+            <input type="button" value="Edit" class="btn btn-primary login editplayer" onclick="displayEdit(this)">
+            <input type="button" value="Delete" class="btn btn-primary login deleteplayer" onclick="deletePlayer(this)">
+          </div>
+        </div>
+      </div>
+      <div class="row playerprofile">
+        <div class="col-sm-12">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Player Statistic</th>
+                <th scope="col">Player Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Fouls</td>
+                <td class="pfoul"></td>
+              </tr>
+              <tr>
+                <td>Red Cards</td>
+                <td class="prc"></td>
+              </tr>
+              <tr>
+                <td>Yellow Cards</td>
+                <td class="pyc"></td>
+              </tr>
+              <tr>
+                <td>Shots on Goal</td>
+                <td class="psog"></td>
+              </tr>
+              <tr>
+                <td>Goals</td>
+                <td class="pg"></td>
+              </tr>
+              <tr>
+                <td>Corner Kick Attempts</td>
+                <td class="pcka"></td>
+              </tr>
+              <tr>
+                <td>Goal Kick Attempts</td>
+                <td class="pgka"></td>
+              </tr>
+              <tr>
+                <td>Penalty Kick Attempts</td>
+                <td class="ppka"></td>
+              </tr>
+              <tr>
+                <td>Throw-ins</td>
+                <td class="pti"></td>
+              </tr>
+              <tr>
+                <td>Appearances</td>
+                <td class="papp"></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <hr>
+    </div>
+
+  </div>
+</body>
+
+<script src="firebase.js"></script>
+<script src="firebase-firestore.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script src="popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
+<script src="bootstrap.min.js"></script>
+<script>
+loadRoster();
+</script>
+</html>
